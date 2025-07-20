@@ -37,7 +37,7 @@ export const environment = {
 ### 4. Run the Application
 
 ```bash
-npm start
+ng serve
 ```
 
 
