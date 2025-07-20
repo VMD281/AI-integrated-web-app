@@ -1,0 +1,39 @@
+.app-container {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  background-color: #fff6ea;
+  position: relative;
+  overflow: hidden;
+
+  // Fixed header - absolutely positioned
+  app-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    height: 60px;
+  }
+
+  // Scrollable message panel - takes remaining space
+  app-message-panel {
+    flex: 1;
+    overflow-y: auto;
+    position: relative;
+    z-index: 1;
+    margin-top: 60px; // Account for fixed header
+    margin-bottom: 90px; // Account for fixed user input
+    height: calc(100vh - 150px); // Viewport height minus header and input
+  }
+
+  // Fixed user input - absolutely positioned
+  app-user-input {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    height: 90px;
+  }
+}

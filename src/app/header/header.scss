@@ -1,0 +1,43 @@
+.header-container {
+  background: rgba(192, 244, 170, 0.9);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  height: 60px;
+  padding: 0 20px;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+
+  // Glass effect border
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.1) 100%);
+    border-radius: 0 0 20px 20px;
+    z-index: -1;
+  }
+
+  // Text shadow for better readability
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+  // Style for the "W" to be bigger
+  .title-text {
+    .big-w {
+      font-size: 32px;
+      font-weight: 900;
+      color: white;
+    }
+  }
+}

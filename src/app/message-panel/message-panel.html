@@ -1,0 +1,27 @@
+<section class="message-panel-container" #messageContainer>
+  @for (message of messages; track message.id) {
+  <div class="message-container">
+    <div class="avatar">
+      {{ message.sender === 'user' ? 'U' : 'AI' }}
+    </div>
+    <div class="message">{{ message.content }}</div>
+  </div>
+  } @empty {
+  <div class="no-message-container">
+    Start a conversation with Gemini AI
+  </div>
+  }
+  
+  @if (isLoading()) {
+  <div class="message-container">
+    <div class="avatar">AI</div>
+    <div class="message loading">
+      <div class="typing-indicator">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  }
+</section>

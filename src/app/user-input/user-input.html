@@ -1,0 +1,14 @@
+<section class="user-input-container">
+  <input
+    class="input-textfield"
+    [(ngModel)]="message"
+    placeholder="Type your message here..."
+    type="text"
+    (keyup)="onKeyUp($event)"
+  />
+  <button class="send-button" (click)="sendMessage()" [disabled]="!message.trim()">
+    <svg class="send-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="currentColor"/>
+    </svg>
+  </button>
+</section>

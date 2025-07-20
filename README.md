@@ -1,59 +1,148 @@
-# ExploringAngular
+# Angular AI Chatbot
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.1.
+A modern Angular chatbot application that integrates with Google's Gemini API to provide intelligent conversational responses.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- 🤖 Real-time AI conversations using Google Gemini Pro
+- 💬 Clean, modern chat interface
+- ⚡ Loading indicators and typing animations
+- 🔄 Conversation history management
+- 🎨 Responsive design with smooth animations
 
-```bash
-ng serve
-```
+## Prerequisites
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- Node.js (v16 or higher)
+- npm or yarn
+- Google Gemini API key
 
-## Code scaffolding
+## Setup Instructions
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### 1. Install Dependencies
 
 ```bash
-ng generate --help
+npm install
 ```
 
-## Building
+### 2. Configure Gemini API Key
 
-To build the project run:
+1. Get your Gemini API key from [Google AI Studio](https://makersuite.google.com/app/apikey)
+2. Copy the template file: `cp src/environments/environment.template.ts src/environments/environment.ts`
+3. Replace `'YOUR_GEMINI_API_KEY_HERE'` with your actual API key:
+
+```typescript
+export const environment = {
+  production: false,
+  geminiApiKey: 'your-actual-gemini-api-key-here',
+  geminiApiUrl: 'https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent'
+};
+```
+
+⚠️ **Security Note**: Never commit your `environment.ts` file to version control. It's already added to `.gitignore`.
+
+### 3. Run the Application
 
 ```bash
-ng build
+npm start
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+The application will be available at `http://localhost:4200`
 
-## Running unit tests
+## Project Structure
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+```
+src/
+├── app/
+│   ├── services/
+│   │   └── ai.service.ts          # Gemini API integration
+│   ├── header/                     # Chat header component
+│   ├── message-panel/              # Message display component
+│   ├── user-input/                 # User input component
+│   ├── utility/
+│   │   └── constants.ts            # Message interface
+│   └── app.ts                      # Main app component
+├── environments/
+│   └── environment.ts              # Environment configuration
+└── styles.scss                     # Global styles
+```
+
+## Key Components
+
+### AI Service (`ai.service.ts`)
+- Handles all Gemini API communication
+- Manages conversation history
+- Provides error handling and response processing
+
+### Message Interface (`constants.ts`)
+```typescript
+export interface Message {
+  id: string;
+  sender: string;  // 'user' or 'assistant'
+  content: string;
+  dateTime: Date;
+}
+```
+
+### App Component (`app.ts`)
+- Manages conversation state
+- Handles user input and AI responses
+- Shows loading states during API calls
+
+## API Configuration
+
+The application uses Google's Gemini Pro API with the following settings:
+- **Model**: `gemini-pro`
+- **Max Output Tokens**: 1000
+- **Temperature**: 0.7
+- **Top P**: 0.8
+- **Top K**: 40
+
+## Error Handling
+
+The application includes comprehensive error handling:
+- API key validation
+- Network error handling
+- Rate limiting protection
+- User-friendly error messages
+
+## Security Notes
+
+⚠️ **Important**: Never commit your API key to version control. The environment file should be added to `.gitignore` in production.
+
+## Troubleshooting
+
+### Common Issues
+
+1. **"Please configure your Gemini API key"**
+   - Make sure you've added your API key to `environment.ts`
+
+2. **"Failed to get response from AI"**
+   - Check your internet connection
+   - Verify your API key is valid
+   - Check Gemini service status
+
+3. **CORS Errors**
+   - The application uses the official Gemini API endpoint
+   - CORS should not be an issue in production
+
+## Development
+
+### Adding New Features
+
+1. **Custom System Prompts**: Modify the conversation flow in `ai.service.ts`
+2. **Different Models**: Change the model parameter in the API request
+3. **Advanced Features**: Add streaming, function calling, or other Gemini features
+
+### Testing
 
 ```bash
-ng test
+npm test
 ```
 
-## Running end-to-end tests
+## License
 
-For end-to-end (e2e) testing, run:
+This project is for educational purposes. Please ensure compliance with Google's usage policies.
 
-```bash
-ng e2e
-```
+## Contributing
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Feel free to submit issues and enhancement requests!
