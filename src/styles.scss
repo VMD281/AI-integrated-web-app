@@ -1,4 +1,4 @@
-/* Global styles */
+
 * {
   margin: 0;
   padding: 0;
@@ -17,13 +17,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Ensure the app container takes full height */
+
 app-root {
   height: 100vh;
   display: block;
 }
 
-/* Custom scrollbar for webkit browsers */
 ::-webkit-scrollbar {
   width: 8px;
 }

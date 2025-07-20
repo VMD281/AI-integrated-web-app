@@ -44,13 +44,9 @@ export class AiService {
   private readonly apiKey = environment.geminiApiKey;
 
   constructor(private http: HttpClient) {
-    console.log('AI Service initialized with API URL:', this.apiUrl);
-    console.log('API Key configured:', this.isApiKeyConfigured());
   }
 
   sendMessage(userMessage: string, conversationHistory: Message[]): Observable<string> {
-    console.log('Sending message to Gemini:', userMessage);
-    console.log('Conversation history length:', conversationHistory.length);
     
     const contents: Array<{
       role: 'user' | 'model';
@@ -83,17 +79,12 @@ export class AiService {
     };
 
     const url = `${this.apiUrl}?key=${this.apiKey}`;
-    
-    console.log('Making API call to:', url);
-    console.log('Request body:', JSON.stringify(requestBody, null, 2));
 
     return this.http.post<GeminiResponse>(url, requestBody)
       .pipe(
         map(response => {
-          console.log('Gemini API response:', response);
           if (response.candidates && response.candidates.length > 0) {
             const responseText = response.candidates[0].content.parts[0].text;
-            console.log('Extracted response text:', responseText);
             return responseText;
           } else {
             console.error('No candidates in response:', response);
@@ -101,13 +92,6 @@ export class AiService {
           }
         }),
         catchError(error => {
-          console.error('Error calling Gemini API:', error);
-          console.error('Error details:', {
-            status: error.status,
-            statusText: error.statusText,
-            error: error.error,
-            message: error.message
-          });
           return throwError(() => new Error('Failed to get response from AI'));
         })
       );

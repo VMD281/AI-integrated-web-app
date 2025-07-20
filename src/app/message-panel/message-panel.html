@@ -1,4 +1,5 @@
 <section class="message-panel-container" #messageContainer>
+
   @for (message of messages; track message.id) {
   <div class="message-container">
     <div class="avatar">
@@ -8,7 +9,7 @@
   </div>
   } @empty {
   <div class="no-message-container">
-    Start a conversation with Gemini AI
+    Start a conversation with WorkivaAI
   </div>
   }
   

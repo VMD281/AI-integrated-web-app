@@ -47,7 +47,7 @@
     animation: fadeInUp 0.3s ease-out;
 
     .avatar {
-      background: #c0f4aa;
+      background: #28a745;
       height: 40px;
       width: 40px;
       border-radius: 50%;
@@ -77,7 +77,7 @@
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
         border: 1px solid rgba(255, 255, 255, 0.3);
-        border-radius: 20px 20px 20px 5px;
+        border-radius: 10%;
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
       }
 
@@ -91,9 +91,9 @@
           width: 10px;
           height: 10px;
           border-radius: 50%;
-          background: #c0f4aa;
+          background: #28a745;
           animation: typing 1.4s infinite ease-in-out;
-          box-shadow: 0 2px 8px rgba(192, 244, 170, 0.3);
+          box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
 
           &:nth-child(1) {
             animation-delay: -0.32s;
@@ -112,10 +112,10 @@
   justify-content: flex-end;
   
   .message {
-    background: #c0f4aa;
+    background: #28a745;
     color: #2c3e50;
-    border-radius: 20px 20px 5px 20px;
-    box-shadow: 0 8px 25px rgba(192, 244, 170, 0.3);
+    border-radius: 10%;
+    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.3);
     
     &::before {
       content: '';
@@ -124,8 +124,8 @@
       right: 0;
       width: 20px;
       height: 20px;
-      background: #c0f4aa;
-      border-radius: 0 20px 0 0;
+      background: #28a745;
+      border-radius: 0 10% 0 0;
       z-index: -1;
     }
   }
@@ -139,7 +139,7 @@
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     color: #2c3e50;
-    border-radius: 20px 20px 20px 5px;
+    border-radius: 10%;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     
@@ -153,7 +153,7 @@
       background: rgba(255, 255, 255, 0.9);
       backdrop-filter: blur(15px);
       -webkit-backdrop-filter: blur(15px);
-      border-radius: 20px 0 0 0;
+      border-radius: 10% 0 0 0;
       z-index: -1;
     }
   }
@@ -180,3 +180,5 @@
     transform: translateY(0);
   }
 }
+
+

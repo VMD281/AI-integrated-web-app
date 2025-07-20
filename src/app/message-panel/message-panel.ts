@@ -16,15 +16,9 @@ export class MessagePanel implements OnChanges, AfterViewChecked {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['messages']) {
-      console.log('MessagePanel: messages changed');
-      console.log('Messages array length:', this.messages.length);
-      console.log('Messages content:', JSON.stringify(this.messages, null, 2));
-      
       this.shouldScrollToBottom = true;
     }
     if (changes['isLoading']) {
-      console.log('MessagePanel: loading state changed to:', this.isLoading());
-      
       if (this.isLoading()) {
         this.shouldScrollToBottom = true;
       }
@@ -47,20 +41,17 @@ export class MessagePanel implements OnChanges, AfterViewChecked {
           top: element.scrollHeight,
           behavior: 'smooth'
         });
-        
-        console.log('Scrolled to bottom, scrollHeight:', element.scrollHeight);
       }
-    } catch (error) {
-      console.error('Error scrolling to bottom:', error);
-      
-      try {
-        if (this.messageContainer) {
-          const element = this.messageContainer.nativeElement;
-          element.scrollTop = element.scrollHeight;
+          } catch (error) {
+        try {
+          if (this.messageContainer) {
+            const element = this.messageContainer.nativeElement;
+            element.scrollTop = element.scrollHeight;
+          }
+        } catch (fallbackError) {
         }
-      } catch (fallbackError) {
-        console.error('Fallback scroll also failed:', fallbackError);
       }
-    }
   }
+
+
 }
