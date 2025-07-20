@@ -16,7 +16,6 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   position: relative;
 
-  // Glass effect border
   &::before {
     content: '';
     position: absolute;
@@ -29,10 +28,8 @@
     z-index: -1;
   }
 
-  // Text shadow for better readability
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 
-  // Style for the "W" to be bigger
   .title-text {
     .big-w {
       font-size: 32px;

@@ -30,7 +30,6 @@ export class App {
   getMessage($event: string) {
     console.log('Received message from user input:', $event);
     
-    // Create user message
     let messageObject: Message = {
       id: uuid(),
       sender: 'user',
@@ -38,20 +37,16 @@ export class App {
       dateTime: new Date(),
     };
 
-    // Add user message to conversation
     this.data.push(messageObject);
     console.log('Added user message to conversation. Total messages:', this.data.length);
     
-    // Set loading state
     this.isLoading.set(true);
     this.cdr.detectChanges();
     
-    // Call AI service
     this.aiService.sendMessage($event, this.data).subscribe({
       next: (response) => {
         console.log('AI response received:', response);
         
-        // Create AI message
         const aiMessage: Message = {
           id: uuid(),
           sender: 'ai',
@@ -59,11 +54,9 @@ export class App {
           dateTime: new Date(),
         };
         
-        // Add AI message to conversation
         this.data.push(aiMessage);
         console.log('Added AI message to conversation. Total messages:', this.data.length);
         
-        // Clear loading state
         this.isLoading.set(false);
         this.error.set(null);
         this.cdr.detectChanges();
@@ -71,7 +64,6 @@ export class App {
       error: (error) => {
         console.error('Error getting AI response:', error);
         
-        // Create error message
         const errorMessage: Message = {
           id: uuid(),
           sender: 'ai',
@@ -79,10 +71,8 @@ export class App {
           dateTime: new Date(),
         };
         
-        // Add error message to conversation
         this.data.push(errorMessage);
         
-        // Clear loading state and set error
         this.isLoading.set(false);
         this.error.set(error.message);
         this.cdr.detectChanges();

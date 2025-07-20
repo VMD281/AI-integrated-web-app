@@ -20,13 +20,11 @@ export class MessagePanel implements OnChanges, AfterViewChecked {
       console.log('Messages array length:', this.messages.length);
       console.log('Messages content:', JSON.stringify(this.messages, null, 2));
       
-      // Set flag to scroll to bottom when new messages are added
       this.shouldScrollToBottom = true;
     }
     if (changes['isLoading']) {
       console.log('MessagePanel: loading state changed to:', this.isLoading());
       
-      // Also scroll when loading state changes (for typing indicator)
       if (this.isLoading()) {
         this.shouldScrollToBottom = true;
       }
@@ -34,7 +32,6 @@ export class MessagePanel implements OnChanges, AfterViewChecked {
   }
 
   ngAfterViewChecked() {
-    // Scroll to bottom after view is checked and DOM is updated
     if (this.shouldScrollToBottom) {
       this.scrollToBottom();
       this.shouldScrollToBottom = false;
@@ -46,7 +43,6 @@ export class MessagePanel implements OnChanges, AfterViewChecked {
       if (this.messageContainer) {
         const element = this.messageContainer.nativeElement;
         
-        // Use smooth scrolling for better UX
         element.scrollTo({
           top: element.scrollHeight,
           behavior: 'smooth'
@@ -57,7 +53,6 @@ export class MessagePanel implements OnChanges, AfterViewChecked {
     } catch (error) {
       console.error('Error scrolling to bottom:', error);
       
-      // Fallback to direct scroll if smooth scroll fails
       try {
         if (this.messageContainer) {
           const element = this.messageContainer.nativeElement;

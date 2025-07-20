@@ -52,17 +52,13 @@ export class AiService {
     console.log('Sending message to Gemini:', userMessage);
     console.log('Conversation history length:', conversationHistory.length);
     
-    // Convert conversation history to Gemini format
     const contents: Array<{
       role: 'user' | 'model';
       parts: Array<{ text: string }>;
     }> = [];
 
-    // Add conversation history (last 10 messages to avoid token limits)
-    // Skip the last message if it's the current user message to avoid duplication
     const recentMessages = conversationHistory.slice(-10);
     recentMessages.forEach(msg => {
-      // Skip if this is the current message being sent
       if (msg.content !== userMessage) {
         contents.push({
           role: msg.sender === 'user' ? 'user' : 'model',
@@ -71,7 +67,6 @@ export class AiService {
       }
     });
 
-    // Add current user message
     contents.push({
       role: 'user',
       parts: [{ text: userMessage }]
@@ -87,7 +82,6 @@ export class AiService {
       }
     };
 
-    // Gemini API requires the API key as a query parameter
     const url = `${this.apiUrl}?key=${this.apiKey}`;
     
     console.log('Making API call to:', url);
@@ -119,7 +113,6 @@ export class AiService {
       );
   }
 
-  // Method to check if API key is configured
   isApiKeyConfigured(): boolean {
     return this.apiKey !== 'YOUR_GEMINI_API_KEY_HERE' && this.apiKey.length > 0;
   }
