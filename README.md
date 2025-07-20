@@ -6,9 +6,7 @@ A modern Angular chatbot application that integrates with Google's Gemini API to
 
 - Real-time AI conversations using Google Gemini Pro
 - Clean, modern chat interface with responsive design
-- Multi-line input with auto-resize and scrolling
 - Conversation history management with sidebar
-- Professional branding with WorkivaAI theme
 
 ## Quick Setup
 
@@ -42,7 +40,6 @@ export const environment = {
 npm start
 ```
 
-The application will be available at `http://localhost:4200`
 
 ## Project Structure
 
@@ -77,7 +74,7 @@ src/
 
 3. **429 Error (Too Many Requests)**
    - Wait a few minutes before sending another message
-   - This is a rate limiting issue from Google's API
+   - This is a rate-limiting issue from Google's API
 
 ## Development
 
@@ -92,8 +89,3 @@ npm run build
 ```bash
 npm test
 ```
-
-
-## License
-
-This project is for educational purposes. Please ensure compliance with Google's usage policies.
