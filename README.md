@@ -93,9 +93,6 @@ npm run build
 npm test
 ```
 
-## Security Notes
-
-⚠️ **Important**: Never commit your API key to version control. The environment files are configured for local development.
 
 ## License
 
